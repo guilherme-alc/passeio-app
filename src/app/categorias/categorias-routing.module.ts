@@ -5,6 +5,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'Categorias',
     component: CategoriaComponent
   }
 ];
