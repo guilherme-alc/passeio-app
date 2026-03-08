@@ -1,0 +1,44 @@
+<div class="rounded mx-auto max-w-lg p-2 shadow-lg my-4">
+  <h3 class="font-semibold text-gray-700 text-md my-2">Nova Categoria</h3>
+  <hr class="border-t">
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="py-2">
+      <label class="text-md text-gray-700 block mb-2" for="nome">Nome</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        formControlName="nome"
+        required
+        placeholder="Ex: Trilhas, Restaurantes, Bares, Praias"
+        class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <span class="text-red-500 text-sm block mt-1"
+          *ngIf="seCampoInvalido('nome', 'required')" >Campo obrigatório</span>
+        <span class="text-red-500 text-sm block mt-1"
+          *ngIf="seCampoInvalido('nome', 'minlength')" >O nome deve ter no mínimo 3 caracteres</span>
+        <span class="text-red-500 text-sm block mt-1"
+          *ngIf="seCampoInvalido('nome', 'maxlength')" >O nome deve ter no máximo 80 caracteres</span>
+    </div>
+
+    <div class="py-2">
+      <label class="text-md text-gray-700 block mb-2" for="descricao">Descrição</label>
+      <textarea
+        id="descricao"
+        name="descricao"
+        formControlName="descricao"
+        maxlength="255"
+        class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </textarea>
+      <span class="text-red-500 text-sm block mt-1"
+        *ngIf="seCampoInvalido('descricao', 'maxlength')">A descrição deve ter no máximo 255 caracteres</span>
+    </div>
+
+    <div class="py-2">
+      <button type="submit" class="w-full rounded bg-blue-500 text-white p-2 hover:bg-blue-600">
+        Cadastrar Categoria
+      </button>
+    </div>
+  </form>
+
+</div>
