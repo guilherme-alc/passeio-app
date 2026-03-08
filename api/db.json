@@ -1,0 +1,15 @@
+{
+  "categorias": [
+    {
+      "id": "1",
+      "nome": "Tiradentes",
+      "descricao": "Cidade turística conhecida por sua arquitetura colonial e história ligada à Inconfidência Mineira."
+    },
+    {
+      "id": "2",
+      "nome": "Bichinho",
+      "descricao": "Cidade mineira, famosa por suas lojas de artesanato e culinária local."
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
