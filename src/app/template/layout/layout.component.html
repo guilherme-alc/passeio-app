@@ -1,1 +1,33 @@
-<p>layout works!</p>
+<header class="bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-lg">
+  <div class="text-center text-white">
+    <h1 class="text-3x1 font-bold">Título</h1>
+    <p class="text-lg mt-2">Subtítulo</p>
+  </div>
+
+  <div class="mt-2">
+    <hr class="border-t border-blue-300 opacity-50">
+  </div>
+
+  <nav class="mt-2">
+    <ul class="flex justify-center space-x-6 text-white font-semibold">
+      <li>
+        <a href="" class="hover:text-yellow-300">Galeria</a>
+      </li>
+      <li>
+        <a href="" class="hover:text-yellow-300">Categorias</a>
+      </li>
+      <li>
+        <a href="" class="hover:text-yellow-300">Lugares</a>
+      </li>
+      <li>
+        <a href="" class="hover:text-yellow-300">Sair</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<router-outlet />
+
+<footer class="bg-gray-200 p-6 text-center">
+  <p class="text-sm text-gray-700">&copy; 2026 Passeio App. Todos os direitos reservados.</p>
+</footer>
