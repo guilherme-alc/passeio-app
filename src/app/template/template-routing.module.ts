@@ -8,6 +8,11 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'categorias',
+        pathMatch: 'full'
+      },
+      {
         path: 'categorias',
         loadChildren: () => import('../categorias/categorias.module')
           .then(m => m.CategoriasModule)
