@@ -5,56 +5,99 @@
   <form id="form" [formGroup]="form" (ngSubmit)="salvar()">
     <div class="py-2">
       <label class="text-md, text-gray-700 block mb-2" for="nome">Nome:</label>
+
       <input
         type="text"
         name="nome"
         id="nome"
         required
         placeholder="Ex: Praia do Forte, Cachoeira do Salto, Restaurante do Zé"
-        class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-        formControlName="nome">
-        <span class="text-red-500 text-sm block mt-1"
-          *ngIf="seCampoInvalido('nome', 'required')" >Campo obrigatório</span>
-        <span class="text-red-500 text-sm block mt-1"
-          *ngIf="seCampoInvalido('nome', 'minlength')" >O nome deve ter no mínimo 3 caracteres</span>
-        <span class="text-red-500 text-sm block mt-1"
-          *ngIf="seCampoInvalido('nome', 'maxlength')" >O nome deve ter no máximo 150 caracteres</span>
+        formControlName="nome"
+        class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+        <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('nome', 'required')">
+          Campo obrigatório
+        </span>
+
+        <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('nome', 'minlength')">
+          O nome deve ter no mínimo 3 caracteres
+        </span>
+
+        <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('nome', 'maxlength')">
+          O nome deve ter no máximo 150 caracteres
+        </span>
     </div>
 
     <div class="py-2">
-      <label class="text-md, text-gray-700 block mb-2" for="nome">Categoria</label>
+      <label class="text-md, text-gray-700 block mb-2" for="categoria">Categoria</label>
 
+      <select
+        name="categoria"
+        id="categoria"
+        required
+        formControlName="categoria"
+        class="p-2 border border-gray-300 bg-white p-2 rounded shadow-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option [value]="" disabled>Selecione uma categoria</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</option>
+      </select>
+
+      <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('categoria', 'required')">
+        Campo obrigatório
+      </span>
     </div>
 
     <div class="py-2">
-      <label class="text-md, text-gray-700 block mb-2" for="nome">Localização</label>
+      <label class="text-md, text-gray-700 block mb-2" for="localizacao">Localização</label>
+
       <input
         type="text"
-        name="local"
-        id="local"
+        name="localizacao"
+        id="localizacao"
         required
         placeholder="Ex: Brumadinho"
+        formControlName="localizacao"
         class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <span class="text-red-500 text-sm block mt-1"
-          *ngIf="seCampoInvalido('local', 'required')" >Campo obrigatório</span>
-        <span class="text-red-500 text-sm block mt-1"
-          *ngIf="seCampoInvalido('local', 'minlength')" >O local deve ter no mínimo 2 caracteres</span>
-        <span class="text-red-500 text-sm block mt-1"
-          *ngIf="seCampoInvalido('local', 'maxlength')" >O local deve ter no máximo 150 caracteres</span>
+
+        <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('localizacao', 'required')">
+          Campo obrigatório
+        </span>
+
+        <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('localizacao', 'minlength')">
+          O local deve ter no mínimo 2 caracteres
+        </span>
+
+        <span class="text-red-500 text-sm block mt-1" *ngIf="seCampoInvalido('localizacao', 'maxlength')">
+          O local deve ter no máximo 150 caracteres
+        </span>
     </div>
 
     <div class="py-2">
-      <label class="text-md, text-gray-700 block mb-2" for="nome">Url da Foto</label>
+      <label class="text-md, text-gray-700 block mb-2" for="urlFoto">Url da Foto</label>
+
       <input
         type="text"
         name="urlFoto"
         id="urlFoto"
+        formControlName="urlFoto"
         class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
     </div>
 
     <div class="py-2">
-      <label class="text-md, text-gray-700 block mb-2" for="nome">Avaliação</label>
+      <label class="text-md, text-gray-700 block mb-2" for="avaliacao">Avaliação</label>
 
+      <select
+        name="avaliacao"
+        id="avaliacao"
+        title="Avaliação do lugar de 1 a 5, onde 1 é muito ruim e 5 é muito bom"
+        formControlName="avaliacao"
+        class="p-2 border border-gray-300 bg-white p-2 rounded shadow-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option [value]="" disabled>Selecione uma avaliação</option>
+        <option [value]="1">1 - Muito ruim</option>
+        <option [value]="2">2 - Ruim</option>
+        <option [value]="3">3 - Regular </option>
+        <option [value]="4">4 - Bom</option>
+        <option [value]="5">5 - Muito Bom</option>
+      </select>
     </div>
 
     <div class="py-2">
