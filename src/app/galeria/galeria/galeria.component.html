@@ -1,0 +1,47 @@
+<div class="p-4">
+
+  <form #frmFiltro="ngForm" (ngSubmit)="listarComFiltros()" >
+    <div class="p-4 bg-white shadow">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+
+        <input type="text"
+          placeholder="Pesquisar pelo nome do local"
+          name="filtroLugar"
+          [(ngModel)] = "filtroLugar"
+          class="w-full border border-gray-300 p-2 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+
+        <select name="filtroCategoria" id="filtroCategoria"
+          [(ngModel)]="filtroCategoria"
+          class="w-60 border border-gray-300 p-2 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none">
+          <option [ngValue]="null">Todos as categorias</option>
+          <option [ngValue]="categoria.id" *ngFor="let categoria of categorias">{{ categoria.nome }}</option>
+        </select>
+
+        <button type="submit" class="bg-blue-500 p-2 rounded shadow-sm hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-300">
+          <span class="text-white font-semibold">Pesquisar</span>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div
+    id="listaLugares"
+    class="p4 grid grid-col-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
+
+    <div
+      class="bg-white shadow rounded overflow-hidden"
+      *ngFor="let lugar of lugaresFiltro">
+      <img [src]="lugar.urlFoto" [alt]="lugar.descricao" class="w-full h-40 object-cover">
+
+      <div class="p-4">
+        <h2 class="text-lg font-semibold">{{ lugar.nome }}</h2>
+        <p class="text-gray-500">Categoria: <span>{{ nomeCategoria(lugar.categoriaId) }}</span></p>
+        <p class="text-gray-500">Localização: <span>{{ lugar.localizacao }}</span></p>
+        <div>
+          <span class="text-yellow-500" [innerHTML]="obterAvaliacao(lugar.avaliacao)"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
