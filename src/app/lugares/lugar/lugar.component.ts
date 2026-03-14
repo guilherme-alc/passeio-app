@@ -19,7 +19,8 @@ export class LugarComponent implements OnInit {
   constructor(private lugarService: LugarService, private categoriaService: CategoriaService) {
     this.form = new FormGroup({
       nome: new FormControl('', [ Validators.required, Validators.minLength(3), Validators.maxLength(150) ]),
-      categoria: new FormControl('', [ Validators.required ]),
+      descricao: new FormControl('', [ Validators.maxLength(255) ]),
+      categoriaId: new FormControl('', [ Validators.required ]),
       localizacao: new FormControl('', [ Validators.required, Validators.minLength(2), Validators.maxLength(150) ]),
       urlFoto: new FormControl(''),
       avaliacao: new FormControl('', [ Validators.required, Validators.min(0), Validators.max(5) ])
@@ -33,9 +34,11 @@ export class LugarComponent implements OnInit {
       return;
     }
 
-    const lugar = this.form.value as Lugar;
-
-    console.log('Lugar salvo com sucesso', lugar);
+    this.lugarService.salvar(this.form.value as Lugar)
+      .subscribe({
+        next: lugarSalvo => this.resetarFormulario(),
+        error: erro => console.error('Erro ao salvar lugar', erro)
+      })
   }
 
   protected seCampoInvalido(nomeCampo: string, validacao: string): boolean {

@@ -1,14 +1,20 @@
 {
   "categorias": [
     {
-      "id": "1",
-      "nome": "Tiradentes",
-      "descricao": "Cidade turística conhecida por sua arquitetura colonial e história ligada à Inconfidência Mineira."
-    },
+      "id": "5ff0",
+      "nome": "Cidades históricas",
+      "descricao": ""
+    }
+  ],
+  "lugares": [
     {
-      "id": "2",
-      "nome": "Bichinho",
-      "descricao": "Cidade mineira, famosa por suas lojas de artesanato e culinária local."
+      "id": "caea",
+      "nome": "Restaurante Dona Neuza - Ouro Preto",
+      "descricao": "Cidade histórica em MG",
+      "categoriaId": "5ff0",
+      "localizacao": "Ouro Preto, MG",
+      "urlFoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Conjunto_arquitet%C3%B4nico_e_urban%C3%ADstico_de_Ouro_Preto.JPG/1280px-Conjunto_arquitet%C3%B4nico_e_urban%C3%ADstico_de_Ouro_Preto.JPG",
+      "avaliacao": "5"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

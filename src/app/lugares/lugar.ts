@@ -1,6 +1,7 @@
 export interface Lugar {
   nome: string;
-  categoria: string;
+  descricao: string;
+  categoriaId: string;
   localizacao: string;
   urlFoto: string;
   avaliacao: number;
