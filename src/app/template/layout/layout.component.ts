@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
 import { LayoutProps } from './layoutprops'
 import { filter, map } from 'rxjs';
 
@@ -15,11 +15,10 @@ export class LayoutComponent  implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.router.events
-      .pipe(
-        filter( () => this.activatedRoute.firstChild !== null ),
-        map( () => this.obterPropriedadeLayout() )
-      ).subscribe((props: LayoutProps) => this.props = props )
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.obterPropriedadeLayout())
+    ).subscribe((props: LayoutProps) => this.props = props )
   }
 
   obterPropriedadeLayout() : LayoutProps {
@@ -28,6 +27,6 @@ export class LayoutComponent  implements OnInit {
       rotaFilha = rotaFilha.firstChild;
     }
 
-    return rotaFilha?.snapshot.data as LayoutProps;
+    return rotaFilha?.snapshot.data as LayoutProps ?? { titulo: '', subtitulo: '' };
   }
 }
